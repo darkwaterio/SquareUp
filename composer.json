@@ -1,6 +1,6 @@
 {
-    "name": "socialiteproviders/stripe",
-    "description": "Stripe OAuth2 Provider for Laravel Socialite",
+    "name": "darkwaterio/socialitesquareup",
+    "description": "SquareUp OAuth2 Provider for Laravel Socialite",
     "license": "MIT",
     "keywords": [
         "laravel",
@@ -11,8 +11,8 @@
     ],
     "authors": [
         {
-            "name": "Brian Faust",
-            "email": "hello@brianfaust.de"
+            "name": "Dark Water",
+            "email": "hello@darkwater.io"
         }
     ],
     "support": {
