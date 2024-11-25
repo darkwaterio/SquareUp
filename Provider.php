@@ -8,18 +8,18 @@ use SocialiteProviders\Manager\OAuth2\User;
 
 class Provider extends AbstractProvider
 {
-    public const IDENTIFIER = 'STRIPE';
+    public const IDENTIFIER = 'SQUAREUP';
 
     protected $scopes = ['read_write'];
 
     protected function getAuthUrl($state): string
     {
-        return $this->buildAuthUrlFromBase('https://connect.stripe.com/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase('https://connect.squareup.com/oauth2/authorize', $state);
     }
 
     protected function getTokenUrl(): string
     {
-        return 'https://connect.stripe.com/oauth/token';
+        return 'https://connect.squareup.com/oauth2/token';
     }
 
     /**
@@ -28,7 +28,7 @@ class Provider extends AbstractProvider
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()->get(
-            'https://api.stripe.com/v1/account',
+            'https://connect.squareup.com/oauth2/status',
             [
                 RequestOptions::HEADERS => [
                     'Authorization' => 'Bearer '.$token,
@@ -58,5 +58,43 @@ class Provider extends AbstractProvider
             'email'    => $user['email'] ?? null,
             'avatar'   => null,
         ]);
+    }
+
+    /**
+     * Get the access token for the given code.
+     *
+     * @param  string $code
+     * @return string
+     */
+    public function getAccessToken($code)
+    {
+        $url = $this->getTokenUrl();
+        $data = $this->getTokenFields($code);
+
+        $response = $this->getHttpClient()->post($url, [
+        'json' => $data,
+        'headers' => [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Client ' . $this->clientSecret,
+        ],
+        ]);
+
+        return $this->parseAccessToken($response->getBody());
+    }
+
+    public function revokeAccessToken() {
+        
+    }
+
+    /**
+     * Get the POST fields for the token request.
+     *
+     * @param  string $code
+     * @return array
+     */
+    protected function getTokenFields($code)
+    {
+        return parent::getTokenFields($code);
     }
 }

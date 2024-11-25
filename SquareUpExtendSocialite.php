@@ -8,6 +8,6 @@ class StripeExtendSocialite
 {
     public function handle(SocialiteWasCalled $socialiteWasCalled): void
     {
-        $socialiteWasCalled->extendSocialite('stripe', Provider::class);
+        $socialiteWasCalled->extendSocialite('squareup', Provider::class);
     }
 }
