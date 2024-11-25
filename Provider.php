@@ -10,7 +10,19 @@ class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'SQUAREUP';
 
-    protected $scopes = ['read_write'];
+    protected $scopes = [
+        'ITEMS_READ',
+        'ITEMS_WRITE',
+        'ORDERS_READ',
+        'ORDERS_WRITE',
+        'MERCHANT_PROFILE_READ',
+        'PAYMENTS_WRITE',
+        'PAYMENTS_READ'
+    //    'ITEMS_READ',
+    //    'ORDERS_READ',
+    //    'EMPLOYEES_READ',
+    //    'TIMECARDS_READ'
+      ];
 
     protected function getAuthUrl($state): string
     {
@@ -84,7 +96,7 @@ class Provider extends AbstractProvider
     }
 
     public function revokeAccessToken() {
-        
+
     }
 
     /**
