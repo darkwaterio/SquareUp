@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialiteProviders\Stripe;
+namespace darkwaterio\SquareUp;
 
 use GuzzleHttp\RequestOptions;
 use SocialiteProviders\Manager\OAuth2\AbstractProvider;

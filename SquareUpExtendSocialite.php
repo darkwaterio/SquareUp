@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialiteProviders\Stripe;
+namespace darkwaterio\SquareUp;
 
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
