@@ -1,5 +1,5 @@
 {
-    "name": "darkwaterio/socialitesquareup",
+    "name": "darkwaterio/squareup",
     "description": "SquareUp OAuth2 Provider for Laravel Socialite",
     "license": "MIT",
     "keywords": [
